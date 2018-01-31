@@ -1,6 +1,6 @@
 pyramid.plot<-function (lx, rx, labels = NA, top.labels = c("Male", "Age", 
     "Female"), main = "", laxlab = NULL, raxlab = NULL, unit = "%", 
-    lxcol, rxcol, gap = 1, space = 0.2, ppmar = c(4, 2, 4, 2), 
+    lxcol, rxcol, border="black", gap = 1, space = 0.2, ppmar = c(4, 2, 4, 2), 
     labelcex = 1, add = FALSE, xlim, show.values = FALSE, ndig = 1, 
     do.first = NULL) {
     
@@ -88,9 +88,9 @@ pyramid.plot<-function (lx, rx, labels = NA, top.labels = c("Male", "Age",
         if (missing(rxcol)) 
             rxcol <- rainbow(ncats)
         rect(-(lx + gap), 1:ncats - halfwidth, rep(-gap, ncats), 
-            1:ncats + halfwidth, col = lxcol)
+            1:ncats + halfwidth, col = lxcol, border=border)
         rect(rep(gap, ncats), 1:ncats - halfwidth, (rx + gap), 
-            1:ncats + halfwidth, col = rxcol)
+            1:ncats + halfwidth, col = rxcol, border=border)
         if (show.values) {
             par(xpd = TRUE)
             lxt <- formatC(lx, format = "f", digits = ndig)
@@ -111,9 +111,9 @@ pyramid.plot<-function (lx, rx, labels = NA, top.labels = c("Male", "Age",
             lxcolor <- rep(lxcol[i], ncats)
             rxcolor <- rep(rxcol[i], ncats)
             rect(-(lx[, i] + lxstart), 1:ncats - halfwidth, -lxstart, 
-                1:ncats + halfwidth, col = lxcolor)
+                1:ncats + halfwidth, col = lxcolor, border=border)
             rect(rxstart, 1:ncats - halfwidth, rx[, i] + rxstart, 
-                1:ncats + halfwidth, col = rxcolor)
+                1:ncats + halfwidth, col = rxcolor, border=border)
             lxstart <- lx[, i] + lxstart
             rxstart <- rx[, i] + rxstart
         }
